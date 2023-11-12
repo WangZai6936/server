@@ -47,6 +47,18 @@
             color: #555;
             margin-top: 15px;
         }
+        /*#file-input {*/
+        /*    display: none;*/
+        /*}*/
+
+        #upload-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -54,11 +66,15 @@
     <div id="current-time"></div>
     <h2>下次班次信息</h2>
     <div class="schedule">
-        <div class="time"><span class="icon">&#128197;</span> 下次白班时间: 2023-11-13</div>
-        <div class="time"><span class="icon">&#128198;</span> 下次晚班时间: 2023-11-26</div>
-        <div class="time"><span class="icon">&#127748;</span> 下次白加晚时间: 2023-11-16</div>
-        <div class="time"><span class="icon">&#127774;</span> 下次休息时间: 2023-11-17</div>
-
+        <div class="time"><span class="icon" >&#128197;</span> 下次白班时间: ${map.dayTime}（${map.dayWeek}）</div>
+        <div class="time"><span class="icon">&#128198;</span> 下次晚班时间: ${map.nightTime}（${map.nightWeek}）</div>
+        <div class="time"><span class="icon">&#127748;</span> 下次白加晚时间:${map.allDayTime}（${map.allDayWeek}）</div>
+        <div class="time"><span class="icon">&#127774;</span> 下次休息时间: ${map.restTime}（${map.restWeek}）</div>
+        <div class="time"> <span style="color: red;font-size: 12px" >提示：如果排班有变动，请及时在下方重新上传排班表！</span></div>
+        <form action="upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" required accept=".xlsx,.xls"/>
+            <button type="submit" id="upload-btn" >上传排班Excel表 </button>
+        </form>
     </div>
 </div>
 
